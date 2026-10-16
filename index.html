@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Abdul Sattar, Data Engineer</title>
+  <meta name="description" content="Abdul Sattar is a data engineer in Lahore who builds fast, reliable pipelines on Azure, Databricks, Spark and SQL, and reports on Power BI." />
+  <meta name="theme-color" content="#0C0F2B" />
+  <meta property="og:title" content="Abdul Sattar, Data Engineer" />
+  <meta property="og:description" content="Pipelines that run faster, and reports people trust. Azure, Databricks, Spark, SQL, Power BI." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="top">
+    <div class="wrap top-row">
+      <a class="mark" href="#top" aria-label="Abdul Sattar, back to top">Abdul Sattar</a>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav">Menu</button>
+      <nav id="nav" class="nav" aria-label="Main">
+        <a href="#work">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#credentials">Certifications</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <div class="wrap">
+        <h1 class="hero-title">I build data pipelines that run faster and reports people can trust.</h1>
+        <p class="hero-sub">I'm Abdul Sattar, a data engineer in Lahore. I work with Python, PySpark, SQL, Azure and Databricks, and I deliver the results in Power BI.</p>
+        <div class="hero-actions">
+          <a class="btn btn-solid" href="#work">See projects</a>
+          <button class="btn btn-line" type="button" data-copy="abdulsattar3773@gmail.com">Copy email</button>
+        </div>
+      </div>
+
+      <div class="wrap">
+        <figure class="stage">
+          <canvas id="flow" role="img" aria-label="Animation: records from API, CRM, SQL and CSV sources pass through ingest, clean and model stages, change from irregular shapes into uniform squares, and fill the bars of a dashboard."></canvas>
+          <figcaption class="stage-cap">
+            <span>A simulated pipeline. Irregular records come in from four sources, duplicates drop out at the clean stage, and tidy records fill the dashboard.</span>
+            <span class="tally"><output id="delivered">0</output> records delivered</span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="block" id="work">
+      <div class="wrap">
+        <h2>Projects</h2>
+
+        <article class="project">
+          <div class="project-text">
+            <h3>Cutting a 700-million-record pipeline from 6 hours to 2.5</h3>
+            <p>An Azure Data Factory job was reloading everything on every run, which caused bottlenecks and resource contention. I replaced the full load with a Student ID partition-key strategy and split the data into 50-million-row partitions.</p>
+            <p>The run time dropped from 6 hours to 2.5, and cloud compute costs fell with it.</p>
+            <p class="tools">Azure Data Factory, partitioning, cost optimization</p>
+          </div>
+          <div class="panel" id="adfDemo">
+            <p class="panel-title">Replay of the result</p>
+            <div class="lane">
+              <span class="lane-name">Full load</span>
+              <div class="track"><div class="fill" id="fullFill"></div></div>
+              <output class="clock" id="fullClock">0.0 h</output>
+            </div>
+            <div class="lane">
+              <span class="lane-name">14 partitions of 50M rows</span>
+              <div class="track segs" id="segs" aria-hidden="true"></div>
+              <output class="clock clock-win" id="partClock">0.0 h</output>
+            </div>
+            <button class="btn btn-line btn-small" type="button" id="adfReplay">Replay</button>
+            <p class="panel-note">Illustrative timing. One second of animation stands for roughly one hour of run time.</p>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="project-text">
+            <h3>Keeping full history with Slowly Changing Dimensions Type 2</h3>
+            <p>Reports need to show what was true at the time, not only what is true now. I built ETL pipelines that detect changes in source data and write a new versioned row, with start and end dates and an active flag, instead of overwriting the old one.</p>
+            <p>Indexes on the tracking columns and error handling keep it fast and consistent, so point-in-time reporting works.</p>
+            <p class="tools">SQL, ETL, indexing, error handling</p>
+          </div>
+          <div class="panel" id="scdDemo">
+            <p class="panel-title">Try it with example data</p>
+            <div class="table-wrap">
+              <table class="scd">
+                <thead><tr><th>customer_key</th><th>city</th><th>valid_from</th><th>valid_to</th><th>is_current</th></tr></thead>
+                <tbody id="scdBody"></tbody>
+              </table>
+            </div>
+            <button class="btn btn-solid btn-small" type="button" id="scdBtn">Change the source record</button>
+            <p class="panel-note" id="scdNote" aria-live="polite">One row, still current.</p>
+          </div>
+        </article>
+
+        <article class="project project-plain">
+          <div class="project-text">
+            <h3>Estimating age from facial expression</h3>
+            <p>My final year project at the Virtual University of Pakistan. I trained a YOLOv4 neural network to estimate a person's age from their face. I annotated the images with LabelImg, trained and fine-tuned the model on Google Colab with Darknet as the backend, and reduced the model weights for better performance. It covers training, evaluation and deployment end to end.</p>
+            <p class="tools">Python, YOLOv4, Google Colab, LabelImg, Darknet, MLlib, neural networks</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="block block-alt" id="experience">
+      <div class="wrap">
+        <h2>Experience</h2>
+        <ol class="pipe" id="pipe">
+          <li class="node">
+            <p class="when">November 2025 to present</p>
+            <h3>Senior Data Engineer, Alpha Bridge Consulting</h3>
+            <p class="where">Lahore, Pakistan</p>
+            <ul>
+              <li>Wrote Python scripts and REST API integrations that fetch, clean and de-duplicate daily lead, campaign and sales pipeline data across CRM and relational databases.</li>
+              <li>Designed and published automated Power BI dashboards for sales pipelines, operational KPIs and campaign performance.</li>
+              <li>Built workflow automations with Google Apps Script that connect spreadsheets, document logs and internal alerts, removing more than 15 hours of manual data entry each week.</li>
+              <li>Managed SQL Server and MySQL databases and optimized queries for fast, reliable ad-hoc reporting.</li>
+            </ul>
+          </li>
+          <li class="node">
+            <p class="when">April 2024 to October 2025</p>
+            <h3>Data Engineer, Wisdom Tech Solutions</h3>
+            <p class="where">Lahore, Pakistan</p>
+            <ul>
+              <li>Migrated enterprise datasets from dedicated SQL pools to serverless SQL pools using SSMS and Oracle, improving performance and scalability.</li>
+              <li>Designed transformation pipelines with Azure Data Factory Data Flows.</li>
+              <li>Ran PySpark transformation scripts in Azure Synapse Analytics notebooks.</li>
+              <li>Worked in remote, cloud-based environments, including managing virtual machines.</li>
+            </ul>
+          </li>
+          <li class="node">
+            <p class="when">March 2022 to October 2025</p>
+            <h3>Data Engineer, Fiverr (Tijgar Software)</h3>
+            <p class="where">Remote from Lahore, Pakistan</p>
+            <ul>
+              <li>Integrated third-party web services and APIs with Python to stream structured and unstructured data into analytical databases.</li>
+              <li>Built end-to-end pipelines and automated ETL workflows that turn messy multi-source datasets into structured reporting formats.</li>
+              <li>Created Power BI and Excel reports that turn lead activity and operational data into clear visuals for global clients.</li>
+              <li>Added automated email and Slack notifications in Python for pipeline status and data quality anomalies.</li>
+            </ul>
+          </li>
+          <li class="node">
+            <p class="when">March 2022 to July 2022</p>
+            <h3>Associate Data Engineer, Digi Float</h3>
+            <p class="where">Lahore, Pakistan</p>
+            <ul>
+              <li>Applied object-oriented and functional programming to real data engineering problems.</li>
+              <li>Learned data warehousing and modeling with star and snowflake schemas.</li>
+              <li>Built interactive dashboards that explain business logic and support decisions.</li>
+              <li>Wrote technical blog posts on Big Data solutions and industry trends.</li>
+            </ul>
+          </li>
+          <li class="node">
+            <p class="when">August 2020 to September 2020</p>
+            <h3>Software Quality Assurance, Afiniti</h3>
+            <p class="where">Lahore, Pakistan</p>
+            <ul>
+              <li>Ran black-box tests and designed test cases to improve software reliability.</li>
+              <li>Produced ad-hoc reports and identified key software performance metrics.</li>
+            </ul>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="block" id="skills">
+      <div class="wrap">
+        <h2>Skills</h2>
+        <dl class="skills">
+          <div><dt>Languages</dt><dd>Python, PySpark, SQL, Scala, C++, Pandas, shell scripting</dd></div>
+          <div><dt>Warehousing and modeling</dt><dd>Data warehousing, ETL and ELT, star schema, snowflake schema, SCD Type 2, OLAP, OLTP</dd></div>
+          <div><dt>Databases</dt><dd>SQL Server, MySQL, Oracle, SSMS, NoSQL, DynamoDB</dd></div>
+          <div><dt>Azure and Fabric</dt><dd>Data Factory, Synapse Analytics, Data Lake, Databricks, Microsoft Fabric</dd></div>
+          <div><dt>Big data and orchestration</dt><dd>Apache Spark, Hadoop, Hive, MapReduce and YARN, Airflow, NiFi</dd></div>
+          <div><dt>AWS</dt><dd>Lambda, Glue, Athena, DynamoDB, CloudWatch, VPC</dd></div>
+          <div><dt>Reporting and analysis</dt><dd>Power BI, Excel, KPI analysis, business analysis, data analysis</dd></div>
+          <div><dt>Automation</dt><dd>Docker, REST APIs, Google Apps Script, email and Slack alerting</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- CERTIFICATIONS -->
+    <section class="block block-alt" id="credentials">
+      <div class="wrap">
+        <h2>Certifications and education</h2>
+        <div class="creds">
+          <div class="cred-lead">
+            <p class="cred-issuer">Microsoft, May 2026</p>
+            <h3>Fabric Data Engineer Associate</h3>
+          </div>
+          <ul class="cred-list">
+            <li><strong>Databricks Lakehouse Platform Accreditation</strong> Databricks</li>
+            <li><strong>Cloud Computing Associate</strong> NAVTTC</li>
+            <li><strong>Advanced SQL Logical Query Processing</strong> LinkedIn Learning</li>
+            <li><strong>Accessing Hadoop Data Using Hive</strong> Cognitive Classes by IBM</li>
+            <li><strong>Big Data 101</strong> Cognitive Classes by IBM</li>
+            <li><strong>Hadoop 101</strong> Cognitive Classes by IBM</li>
+            <li><strong>MapReduce and YARN</strong> Cognitive Classes by IBM</li>
+            <li><strong>SQL and Relational Database 101</strong> Cognitive Classes by IBM</li>
+            <li><strong>Power BI for Beginners</strong> Simplilearn</li>
+            <li><strong>Introduction to Big Data</strong> Dice Analytics</li>
+          </ul>
+        </div>
+        <p class="edu"><strong>BS Software Engineering</strong>, Virtual University of Pakistan, October 2018 to April 2023. Languages: English and Urdu.</p>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="block contact" id="contact">
+      <div class="wrap">
+        <h2>Let's talk about your data</h2>
+        <p class="contact-sub">I'm open to data engineering roles and consulting work. Email is the quickest way to reach me.</p>
+        <p class="contact-mail"><a href="mailto:abdulsattar3773@gmail.com">abdulsattar3773@gmail.com</a></p>
+        <div class="hero-actions">
+          <a class="btn btn-solid" href="mailto:abdulsattar3773@gmail.com">Send an email</a>
+          <button class="btn btn-line" type="button" data-copy="abdulsattar3773@gmail.com">Copy email</button>
+        </div>
+        <p class="sr-only" id="copyStatus" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap foot-row">
+      <p>&copy; <span id="year">2026</span> Abdul Sattar</p>
+      <a href="#top">Back to top</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
